@@ -19,20 +19,13 @@ def decrypt(ciphertext, private_key):
 def main():
     print("=== Реализация RSA ===")
     try:
-        # Ввод параметров
         p = int(input("Введите первое простое число p: "))
         q = int(input("Введите второе простое число q: "))
-
-        # Выбор e
         e_input = input("Введите значение e которое должно быть взаимно простое с φ(n): ")
         e = int(e_input) if e_input else None
-
-        # Генерация ключей
         public_key, private_key = generate_keys(p, q, e)
         print(f"\nПубличный ключ (e, n): {public_key}")
         print(f"Приватный ключ (d, n): {private_key}")
-
-        # Работа с сообщением
         message = int(input(f"\nВведите число для шифрования (должно быть < {public_key[1]}): "))
         ciphertext = encrypt(message, public_key)
         print(f"Зашифрованное сообщение: {ciphertext}")
